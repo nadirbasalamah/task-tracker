@@ -1,4 +1,5 @@
 <template>
+  <SearchTask v-show="!showAddTask" @search-task="searchTask" />
   <AddTask v-show="showAddTask" @add-task="addTask" />
   <Tasks
     @toggle-reminder="toggleReminder"
@@ -10,6 +11,7 @@
 <script>
 import Tasks from "../components/Tasks";
 import AddTask from "../components/AddTask";
+import SearchTask from "../components/SearchTask";
 
 export default {
   name: "Home",
@@ -19,6 +21,7 @@ export default {
   components: {
     Tasks,
     AddTask,
+    SearchTask,
   },
   data() {
     return {
@@ -38,6 +41,12 @@ export default {
       const data = await res.json();
 
       this.tasks = [...this.tasks, data];
+    },
+    async searchTask(taskName) {
+      const res = await fetch(`api/tasks?q=${taskName}`);
+      const data = await res.json();
+
+      this.tasks = data;
     },
     async deleteTask(id) {
       if (confirm("Are you sure?")) {

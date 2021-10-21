@@ -5,7 +5,14 @@
   >
     <h3>
       {{ task.text }}
-      <i @click="$emit('delete-task', task.id)" class="fas fa-times"></i>
+      <div class="actions">
+        <i
+          @click="$emit('delete-task', task.id)"
+          class="fas fa-times"
+          id="delete"
+        ></i>
+        <i class="fas fa-edit" id="edit"></i>
+      </div>
     </h3>
     <p>{{ task.day }}</p>
   </div>
@@ -21,8 +28,17 @@ export default {
 </script>
 
 <style scope>
-.fas {
+.actions {
+  display: flex;
+}
+
+#delete {
+  margin-right: 8px;
   color: red;
+}
+
+#edit {
+  color: blue;
 }
 
 .task {
