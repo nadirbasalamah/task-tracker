@@ -11,7 +11,9 @@
           class="fas fa-times"
           id="delete"
         ></i>
-        <i class="fas fa-edit" id="edit"></i>
+        <router-link :to="{ name: 'UpdateTask', params: { id: task.id } }">
+          <i class="fas fa-edit" id="edit"></i>
+        </router-link>
       </div>
     </h3>
     <p>{{ task.day }}</p>
