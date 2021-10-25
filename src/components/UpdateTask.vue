@@ -18,11 +18,21 @@
       <input type="checkbox" v-model="reminder" name="reminder" />
     </div>
 
-    <input type="submit" value="Update Task" class="btn btn-block" />
+    <input
+      type="submit"
+      value="Update Task"
+      class="btn btn-block"
+      id="update"
+    />
   </form>
+  <router-link to="/">
+    <button class="btn btn-block">Go Back</button>
+  </router-link>
 </template>
 
 <script>
+import TaskService from "../services/task";
+
 export default {
   name: "UpdateTask",
   props: {
@@ -54,31 +64,11 @@ export default {
       this.$router.push("/");
     },
     async updateTask(id, task) {
-      const taskToUpdate = await this.fetchTask(id);
-
-      const updTask = {
-        ...taskToUpdate,
-        text: task.text,
-        day: task.day,
-        reminder: task.reminder,
-      };
-
-      await fetch(`http://localhost:3000/tasks/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updTask),
-      });
-    },
-    async fetchTask(id) {
-      const res = await fetch(`http://localhost:3000/tasks/${id}`);
-      const data = await res.json();
-      return data;
+      await TaskService.updateTask(id, task);
     },
   },
   async created() {
-    const task = await this.fetchTask(this.id);
+    const task = await TaskService.fetchTask(this.id);
 
     this.text = task.text;
     this.day = task.day;
@@ -88,6 +78,9 @@ export default {
 </script>
 
 <style scoped>
+#update {
+  background-color: darkcyan;
+}
 .add-form {
   margin-bottom: 40px;
 }

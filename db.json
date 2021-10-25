@@ -13,9 +13,9 @@
       "reminder": true
     },
     {
-      "text": "learn laravel full stack",
-      "day": "August 21st at 2:20 pm",
-      "reminder": false,
+      "text": "learn microservices",
+      "day": "August 25th at 2:30 pm",
+      "reminder": true,
       "id": "mEXHLWn"
     }
   ]
