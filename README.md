@@ -1,24 +1,23 @@
 # task-tracker
 
-## Project setup
+Simple web application created with VueJS to manage tasks. This web application is created based on this [tutorial](https://youtu.be/qZXt1Aom3Cs).
+
+## How to Use
+
+1. Before start the application, install all dependencies with this command.
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+2. Start the backend server with this command.
+
+```
+npm run backend
+```
+
+3. Start the application with this command.
+
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
